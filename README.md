@@ -19,7 +19,7 @@ npm install --save react-native-customisable-switch
 
 ```javascript
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 import Switch from 'react-native-customisable-switch';
 
 export default class Test extends Component {
@@ -36,7 +36,7 @@ export default class Test extends Component {
     const {
       switchOneValue,
       switchTwoValue,
-      switchOneValue,
+      switchThreeValue
     } = this.state;
 
     return(
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-)};
+});
 ```
 
 ### Component Properties
