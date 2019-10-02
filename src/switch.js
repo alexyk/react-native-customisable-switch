@@ -37,6 +37,7 @@ export default class Switch extends Component {
     shadowOffset: PropTypes.object,
     shadowRadius: PropTypes.number,
     shadowOpacity: PropTypes.number,
+    containerStyle: PropTypes.object,
   };
 
   static defaultProps = {
@@ -137,6 +138,7 @@ render() {
       shadowOffset,
       shadowRadius,
       shadowOpacity,
+      containerStyle
     } = this.props;
 
     const backgroundColorValue = backgroundColor.interpolate({
@@ -159,16 +161,15 @@ render() {
     const containerWidth = switchWidth > buttonWidth ? switchWidth : buttonWidth;
 
     return (
-      <TouchableWithoutFeedback
-        onPress={onChangeValue}
-      >
+      <TouchableWithoutFeedback onPress={onChangeValue}>
         <View
           style={[
             styles.container,
+            containerStyle,
             {
               height: containerHeight,
-              width: containerWidth,
-            }
+              width: containerWidth
+            },
           ]}
         >
           <Animated.View
@@ -180,21 +181,17 @@ render() {
               borderWidth: switchBorderWidth,
               borderColor: switchBorderColor,
               zIndex: 1,
-              position: 'absolute',
+              position: "absolute",
               top: (containerHeight - switchHeight) / 2,
-              left: (containerWidth - switchWidth) / 2,
+              left: (containerWidth - switchWidth) / 2
             }}
           >
             <View style={styles.animatedContainer}>
               <View style={styles.textContainer}>
-                <Text style={{ color: activeTextColor, fontSize }}>
-                  {value ? activeText : ''}
-                </Text>
+                <Text style={{ color: activeTextColor, fontSize }}>{value ? activeText : ""}</Text>
               </View>
               <View style={styles.textContainer}>
-                <Text style={{ color: inactiveTextColor, fontSize }}>
-                  {value ? '' : inactiveText}
-                </Text>
+                <Text style={{ color: inactiveTextColor, fontSize }}>{value ? "" : inactiveText}</Text>
               </View>
             </View>
           </Animated.View>
@@ -207,8 +204,8 @@ render() {
               width: buttonWidth,
               height: buttonHeight,
               zIndex: 3,
-              position: 'absolute',
-              top: (containerHeight - buttonHeight)/2,
+              position: "absolute",
+              top: (containerHeight - buttonHeight) / 2,
               left: transformValue,
               shadowColor: shadowColor,
               shadowOpacity: shadowOpacity,
